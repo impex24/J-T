@@ -4,19 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jauer&Team | Haus- & Gartenservice in Dorsten</title>
-  <meta name="description" content="Jauer&Team – moderner Haus- und Gartenservice in Dorsten und Umgebung. Persönlich, zuverlässig und direkt vor Ort.">
+  <meta name="description" content="Jauer&Team – zuverlässiger Haus- und Gartenservice in Dorsten. Persönlich, ordentlich und direkt vor Ort.">
   <style>
     :root {
-      --green-dark: #183427;
-      --green: #4CAF50;
-      --green-light: #EAF5EA;
-      --beige: #F7F6F1;
-      --white: #FFFFFF;
-      --text: #1F1F1F;
-      --muted: #5F655F;
-      --border: rgba(24, 52, 39, 0.10);
-      --shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-      --radius: 22px;
+      --green-dark: #173427;
+      --green: #4caf50;
+      --green-hover: #429846;
+      --green-soft: #eaf5ea;
+      --beige: #f7f6f1;
+      --white: #ffffff;
+      --text: #1f1f1f;
+      --muted: #616761;
+      --border: rgba(23, 52, 39, 0.10);
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --radius: 24px;
+      --radius-sm: 16px;
       --max-width: 1180px;
     }
 
@@ -43,8 +45,8 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     .container {
@@ -54,60 +56,83 @@
 
     .topbar {
       background: var(--green-dark);
-      color: var(--white);
+      color: rgba(255,255,255,0.92);
       text-align: center;
-      padding: 10px 14px;
-      font-size: 0.93rem;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
 
     header {
-      position: absolute;
-      top: 44px;
+      position: fixed;
+      top: 36px;
       left: 0;
       width: 100%;
-      z-index: 20;
+      z-index: 1000;
+      transition: 0.25s ease;
+    }
+
+    .header-shell {
+      background: rgba(16, 29, 22, 0.34);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      margin-top: 12px;
+      transition: 0.25s ease;
+    }
+
+    header.scrolled .header-shell {
+      background: rgba(16, 29, 22, 0.72);
+      border-color: rgba(255,255,255,0.16);
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 0;
-      gap: 20px;
+      gap: 18px;
+      padding: 14px 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      color: var(--white);
-      font-weight: 700;
-      font-size: 1.2rem;
+      min-width: 0;
     }
 
     .logo-box {
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(8px);
-      font-size: 0.8rem;
-      font-weight: 700;
       color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
-    .brand span {
-      color: #9BE19E;
+    .brand-text {
+      color: var(--white);
+      font-size: 1.06rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      color: #9fe0a2;
     }
 
     .nav-links {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
@@ -121,103 +146,105 @@
 
     .hero {
       min-height: 100vh;
-      position: relative;
       display: flex;
       align-items: center;
-      background:
-        linear-gradient(rgba(16, 28, 22, 0.48), rgba(16, 28, 22, 0.48)),
-        url("hero.jpg.png") center center / cover no-repeat;
+      position: relative;
       color: var(--white);
+      background:
+        linear-gradient(rgba(14, 25, 20, 0.54), rgba(14, 25, 20, 0.54)),
+        url("hero.jpg.png") center center / cover no-repeat;
       overflow: hidden;
     }
 
-    ..hero-content {
-  max-width: 760px;
-  padding-top: 140px;
-  padding-bottom: 70px;
-}
+    .hero-content {
+      max-width: 760px;
+      padding-top: 250px;
+      padding-bottom: 110px;
+    }
 
     .eyebrow {
       display: inline-block;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.20);
       color: var(--white);
+      padding: 10px 16px;
       border-radius: 999px;
-      padding: 9px 14px;
-      margin-bottom: 18px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
       backdrop-filter: blur(8px);
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      line-height: 1.02;
+      font-size: clamp(2.5rem, 6vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
       margin-bottom: 18px;
-      letter-spacing: -0.03em;
+      max-width: 780px;
     }
 
     .hero p {
-      font-size: 1.08rem;
-      max-width: 620px;
+      font-size: 1.06rem;
       color: rgba(255,255,255,0.92);
+      max-width: 620px;
       margin-bottom: 28px;
     }
 
     .hero-buttons {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
       padding: 14px 22px;
+      border-radius: 999px;
       font-weight: 700;
       transition: 0.2s ease;
+      border: 1px solid transparent;
     }
 
     .btn-primary {
       background: var(--green);
       color: var(--white);
-      box-shadow: 0 10px 20px rgba(76, 175, 80, 0.25);
+      box-shadow: 0 10px 24px rgba(76,175,80,0.28);
     }
 
     .btn-primary:hover {
-      background: #439746;
+      background: var(--green-hover);
       transform: translateY(-1px);
     }
 
     .btn-secondary {
       background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
       color: var(--white);
+      border-color: rgba(255,255,255,0.18);
       backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.18);
     }
 
-    .hero-points {
+    .trust-pills {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .hero-point {
+    .trust-pill {
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.18);
+      color: var(--white);
       padding: 10px 14px;
       border-radius: 999px;
-      color: var(--white);
-      font-weight: 700;
       font-size: 0.92rem;
-      backdrop-filter: blur(6px);
+      font-weight: 700;
+      backdrop-filter: blur(8px);
     }
 
     section {
@@ -249,8 +276,25 @@
       gap: 22px;
     }
 
+    .service-card,
+    .why-card,
+    .story-box,
+    .trust-box,
+    .review-card,
+    .map-card,
+    .cta-strip {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.65s ease;
+    }
+
+    .animate {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
     .service-card {
-      background: rgba(255,255,255,0.76);
+      background: rgba(255,255,255,0.78);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
@@ -260,7 +304,7 @@
 
     .service-card img {
       width: 100%;
-      height: 250px;
+      height: 240px;
       object-fit: cover;
     }
 
@@ -269,8 +313,8 @@
     }
 
     .service-card h3 {
+      font-size: 1.18rem;
       color: var(--green-dark);
-      font-size: 1.22rem;
       margin-bottom: 10px;
     }
 
@@ -283,34 +327,34 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 10px;
     }
 
     .why-card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 24px 20px;
       box-shadow: var(--shadow);
       text-align: center;
     }
 
-    .why-number {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      margin: 0 auto 14px;
-      background: var(--green-light);
+    .why-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--green-soft);
       color: var(--green-dark);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
+      margin: 0 auto 14px;
+      font-size: 1rem;
     }
 
     .why-card h3 {
       color: var(--green-dark);
-      font-size: 1.04rem;
+      font-size: 1.03rem;
       margin-bottom: 8px;
     }
 
@@ -319,13 +363,69 @@
       font-size: 0.94rem;
     }
 
-    .history-grid {
+    .trust-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
 
-    .history-box {
+    .trust-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: 0.2s ease;
+    }
+
+    .trust-box:hover {
+      transform: translateY(-4px);
+    }
+
+    .trust-box h3 {
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .trust-box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .reviews-summary {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .rating-box {
+      background: linear-gradient(135deg, var(--green-dark), #294c39);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .rating-number {
+      font-size: 3rem;
+      line-height: 1;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .stars {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .rating-box p {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.98rem;
+    }
+
+    .reviews-note {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 24px;
@@ -333,19 +433,98 @@
       box-shadow: var(--shadow);
     }
 
-    .history-box h3 {
-      font-size: 1.28rem;
+    .reviews-note h3 {
       color: var(--green-dark);
+      margin-bottom: 10px;
+      font-size: 1.18rem;
+    }
+
+    .reviews-note p {
+      color: var(--muted);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.2;
+    }
+
+    .review-meta {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .review-stars {
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+    }
+
+    .review-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .story-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .story-box h3 {
+      color: var(--green-dark);
+      font-size: 1.26rem;
       margin-bottom: 14px;
     }
 
-    .history-box p + p {
+    .story-box p + p {
       margin-top: 14px;
     }
 
     .highlight {
       margin-top: 20px;
-      background: var(--green-light);
+      background: var(--green-soft);
       border-left: 4px solid var(--green);
       padding: 16px 18px;
       border-radius: 0 16px 16px 0;
@@ -353,8 +532,77 @@
       font-weight: 700;
     }
 
+    .map-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .map-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .map-card h3 {
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .map-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .map-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .map-card ul li span {
+      display: block;
+      font-size: 0.87rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .map-embed {
+      border: 0;
+      width: 100%;
+      min-height: 420px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-strip {
+      background: linear-gradient(135deg, var(--green-dark), #284a37);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta-strip h3 {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    .cta-strip p {
+      color: rgba(255,255,255,0.9);
+    }
+
     .contact-shell {
-      background: linear-gradient(135deg, var(--green-dark), #284A37);
+      background: linear-gradient(135deg, var(--green-dark), #284a37);
       color: var(--white);
       border-radius: 28px;
       padding: 34px;
@@ -363,7 +611,7 @@
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 24px;
       align-items: start;
     }
@@ -376,14 +624,14 @@
 
     .contact-shell p {
       color: rgba(255,255,255,0.9);
-      max-width: 650px;
+      max-width: 620px;
     }
 
     .contact-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 24px;
+      flex-wrap: wrap;
+      margin-top: 22px;
     }
 
     .btn-light {
@@ -392,13 +640,13 @@
     }
 
     .btn-light:hover {
-      background: #f2f2f2;
+      background: #f0f0f0;
     }
 
     .btn-outline-light {
       background: transparent;
       color: var(--white);
-      border: 1px solid rgba(255,255,255,0.35);
+      border-color: rgba(255,255,255,0.28);
     }
 
     .btn-outline-light:hover {
@@ -414,7 +662,7 @@
     }
 
     .contact-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       margin-bottom: 14px;
     }
 
@@ -432,17 +680,38 @@
     }
 
     .footer {
-      padding: 28px 0 36px;
+      padding: 30px 0 36px;
       color: var(--muted);
     }
 
     .footer-inner {
-      border-top: 1px solid rgba(24, 52, 39, 0.12);
-      padding-top: 20px;
+      border-top: 1px solid rgba(23, 52, 39, 0.12);
+      padding-top: 22px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      color: var(--green-dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .footer small {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
       display: flex;
-      justify-content: space-between;
       gap: 14px;
       flex-wrap: wrap;
+      justify-content: flex-end;
       font-size: 0.94rem;
     }
 
@@ -450,51 +719,134 @@
       position: fixed;
       right: 16px;
       bottom: 16px;
+      z-index: 1000;
       background: var(--green);
       color: var(--white);
-      padding: 14px 18px;
+      padding: 13px 16px;
       border-radius: 999px;
       font-weight: 700;
-      box-shadow: 0 14px 28px rgba(76,175,80,0.32);
-      z-index: 100;
+      box-shadow: 0 14px 28px rgba(76,175,80,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: 0.25s ease;
+    }
+
+    .floating-whatsapp.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
 
     .floating-whatsapp:hover {
-      background: #439746;
+      background: var(--green-hover);
     }
 
     @media (max-width: 980px) {
       .services-grid,
       .why-grid,
-      .history-grid,
-      .contact-grid {
+      .review-grid,
+      .story-grid,
+      .map-grid,
+      .contact-grid,
+      .footer-inner,
+      .reviews-summary {
         grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+
+      .cta-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      header {
+        top: 34px;
       }
 
       .nav {
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero-content {
+        padding-top: 280px;
+        padding-bottom: 90px;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 640px) {
+      .topbar {
+        font-size: 0.78rem;
+        padding: 8px 10px;
+      }
+
+      header {
+        top: 34px;
+      }
+
+      .header-shell {
+        border-radius: 18px;
+      }
+
+      .nav {
+        padding: 12px 14px;
+      }
+
+      .brand-text {
+        font-size: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.92rem;
+      }
+
       .hero-content {
-        padding-top: 260px;
+        padding-top: 300px;
+        padding-bottom: 95px;
+      }
+
+      .hero h1 {
+        font-size: 2.25rem;
+        line-height: 1.02;
+      }
+
+      .hero p {
+        font-size: 1rem;
       }
 
       .hero-buttons .btn,
-      .contact-actions .btn {
+      .contact-actions .btn,
+      .cta-strip .btn {
         width: 100%;
+      }
+
+      .service-card img {
+        height: 220px;
       }
 
       .floating-whatsapp {
         left: 16px;
         right: 16px;
         text-align: center;
-      }
-
-      .service-card img {
-        height: 220px;
+        bottom: 12px;
       }
     }
   </style>
@@ -505,19 +857,24 @@
     Zuverlässige Unterstützung rund um Haus, Garten und Alltag in Dorsten & Umgebung
   </div>
 
-  <header>
-    <div class="container nav">
-      <a href="#start" class="brand">
-        <div class="logo-box">LOGO</div>
-        <div>Jauer<span>&Team</span></div>
-      </a>
+  <header id="siteHeader">
+    <div class="container">
+      <div class="header-shell">
+        <div class="nav">
+          <a href="#start" class="brand">
+            <div class="logo-box">LOGO</div>
+            <div class="brand-text">Jauer<span>&Team</span></div>
+          </a>
 
-      <nav class="nav-links">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#warum">Warum wir</a>
-        <a href="#geschichte">Geschichte</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+          <nav class="nav-links">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#vertrauen">Vertrauen</a>
+            <a href="#bewertungen">Bewertungen</a>
+            <a href="#geschichte">Geschichte</a>
+            <a href="#kontakt">Kontakt</a>
+          </nav>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -533,14 +890,14 @@
           </p>
 
           <div class="hero-buttons">
-            <a href="#kontakt" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+            <a href="#kontakt" class="btn btn-primary">Jetzt unverbindlich anfragen</a>
             <a href="#leistungen" class="btn btn-secondary">Leistungen ansehen</a>
           </div>
 
-          <div class="hero-points">
-            <div class="hero-point">Persönlich erreichbar</div>
-            <div class="hero-point">In Dorsten & Umgebung</div>
-            <div class="hero-point">Sauber & zuverlässig</div>
+          <div class="trust-pills">
+            <div class="trust-pill">5,0 Sterne Bewertung</div>
+            <div class="trust-pill">In Dorsten & Umgebung</div>
+            <div class="trust-pill">Persönlich erreichbar</div>
           </div>
         </div>
       </div>
@@ -601,27 +958,133 @@
 
         <div class="why-grid">
           <div class="why-card">
-            <div class="why-number">01</div>
+            <div class="why-icon">01</div>
             <h3>Persönlich statt anonym</h3>
             <p>Direkter Kontakt und ein bodenständiger Umgang statt distanzierter Abwicklung.</p>
           </div>
 
           <div class="why-card">
-            <div class="why-number">02</div>
+            <div class="why-icon">02</div>
             <h3>Zuverlässig im Alltag</h3>
             <p>Wenn Hilfe gebraucht wird, zählt Verlässlichkeit. Genau darauf können Sie bauen.</p>
           </div>
 
           <div class="why-card">
-            <div class="why-number">03</div>
+            <div class="why-icon">03</div>
             <h3>Saubere Arbeit</h3>
             <p>Ordnung, Sorgfalt und ein gutes Ergebnis sind für uns kein Extra, sondern Standard.</p>
           </div>
 
           <div class="why-card">
-            <div class="why-number">04</div>
+            <div class="why-icon">04</div>
             <h3>Lokal in Dorsten</h3>
             <p>Kurze Wege, direkte Erreichbarkeit und ein Service, der nah an den Menschen ist.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vertrauen">
+      <div class="container">
+        <div class="section-header">
+          <h2>Darauf können Sie sich verlassen</h2>
+          <p>
+            Vertrauen entsteht nicht durch Worte, sondern durch saubere Arbeit und Verlässlichkeit im Alltag.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-box">
+            <h3>✔ Zuverlässige Termine</h3>
+            <p>Absprachen werden eingehalten – ohne Nachlaufen oder ständiges Nachfragen.</p>
+          </div>
+
+          <div class="trust-box">
+            <h3>✔ Saubere Ergebnisse</h3>
+            <p>Ordentliche Arbeit mit Blick fürs Detail – genau so, wie man es sich wünscht.</p>
+          </div>
+
+          <div class="trust-box">
+            <h3>✔ Direkter Ansprechpartner</h3>
+            <p>Kein Callcenter – sondern persönlicher Kontakt von Anfang bis Ende.</p>
+          </div>
+
+          <div class="trust-box">
+            <h3>✔ Regional vor Ort</h3>
+            <p>Schnell erreichbar in Dorsten & Umgebung – flexibel und unkompliziert.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bewertungen">
+      <div class="container">
+        <div class="section-header">
+          <h2>Was Kunden sagen</h2>
+          <p>
+            Echte Google-Bewertungen aus Dorsten – ein starkes Zeichen für Zuverlässigkeit und saubere Arbeit.
+          </p>
+        </div>
+
+        <div class="reviews-summary">
+          <div class="rating-box">
+            <div class="rating-number">5,0</div>
+            <div class="stars">★★★★★</div>
+            <p>
+              Basierend auf Google-Bewertungen für Jauer&Team in Dorsten.
+            </p>
+          </div>
+
+          <div class="reviews-note">
+            <h3>Vertrauen, das man nachlesen kann</h3>
+            <p>
+              Freundlichkeit, Pünktlichkeit, ordentliche Preise und saubere Arbeit –
+              genau diese Punkte werden in den Bewertungen immer wieder hervorgehoben.
+            </p>
+          </div>
+        </div>
+
+        <div class="review-grid">
+          <div class="review-card">
+            <div class="review-head">
+              <div class="review-avatar">R</div>
+              <div>
+                <div class="review-name">Renate Plechinger</div>
+                <div class="review-meta">Google-Bewertung</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p>
+              „Ansprechbarkeit, Pünktlichkeit, Qualität, Professionalität und Wert.“
+            </p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-head">
+              <div class="review-avatar">B</div>
+              <div>
+                <div class="review-name">Ben Müller</div>
+                <div class="review-meta">Google-Bewertung</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p>
+              „Super Betrieb, nettes Personal 👌“
+            </p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-head">
+              <div class="review-avatar">M</div>
+              <div>
+                <div class="review-name">Marco Schlarpp</div>
+                <div class="review-meta">Google-Bewertung</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+            <p>
+              „Sehr gute Erfahrung mit dem Service – freundlich, zuverlässig und ordentlich.“
+            </p>
           </div>
         </div>
       </div>
@@ -637,8 +1100,8 @@
           </p>
         </div>
 
-        <div class="history-grid">
-          <div class="history-box">
+        <div class="story-grid">
+          <div class="story-box">
             <h3>Wofür wir stehen</h3>
             <p>
               Dieser Service ist aus dem Wunsch entstanden, im Alltag wirklich hilfreich zu sein und Aufgaben zuverlässig zu übernehmen.
@@ -650,7 +1113,7 @@
             </p>
           </div>
 
-          <div class="history-box">
+          <div class="story-box">
             <h3>Mit Respekt weitergeführt</h3>
             <p>
               Der Grundstein für diesen Service wurde vom Vater gelegt, der das Unternehmen
@@ -670,6 +1133,74 @@
       </div>
     </section>
 
+    <section id="standort">
+      <div class="container">
+        <div class="section-header">
+          <h2>Standort & Einsatzgebiet</h2>
+          <p>
+            Direkt in Dorsten vor Ort – für kurze Wege, schnelle Rückmeldung und unkomplizierte Unterstützung.
+          </p>
+        </div>
+
+        <div class="map-grid">
+          <div class="map-card">
+            <h3>Jauer&Team</h3>
+            <p>
+              Haus- & Gartenservice mit persönlichem Ansprechpartner in Dorsten.
+            </p>
+
+            <ul>
+              <li>
+                <span>Adresse</span>
+                Bismarckstraße 115, 46284 Dorsten
+              </li>
+              <li>
+                <span>Einsatzgebiet</span>
+                Dorsten & Umgebung
+              </li>
+              <li>
+                <span>E-Mail</span>
+                <a href="mailto:jauer.m@web.de">jauer.m@web.de</a>
+              </li>
+              <li>
+                <span>Telefon</span>
+                <a href="tel:+490000000000">Telefon später einfügen</a>
+              </li>
+            </ul>
+
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Bismarckstra%C3%9Fe+115,+46284+Dorsten" target="_blank" rel="noopener noreferrer">
+              Route in Google Maps öffnen
+            </a>
+          </div>
+
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps?q=Bismarckstraße%20115,%2046284%20Dorsten&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Maps Standort Jauer&Team">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-strip">
+          <div>
+            <h3>Schnell und unverbindlich anfragen</h3>
+            <p>
+              Schreiben Sie einfach per WhatsApp oder rufen Sie an – wir melden uns schnellstmöglich zurück.
+            </p>
+          </div>
+
+          <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten%20und%20h%C3%A4tte%20gerne%20weitere%20Informationen.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-light" target="_blank" rel="noopener noreferrer">
+            Per WhatsApp anfragen
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="kontakt">
       <div class="container">
         <div class="contact-shell">
@@ -683,7 +1214,9 @@
 
               <div class="contact-actions">
                 <a href="tel:+490000000000" class="btn btn-light">Jetzt anrufen</a>
-                <a href="https://wa.me/490000000000" class="btn btn-outline-light">WhatsApp schreiben</a>
+                <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten%20und%20h%C3%A4tte%20gerne%20weitere%20Informationen.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer">
+                  WhatsApp schreiben
+                </a>
               </div>
             </div>
 
@@ -692,15 +1225,15 @@
               <ul class="contact-list">
                 <li>
                   <span>Telefon</span>
-                  <a href="tel:+490000000000">+49 0000 000000</a>
+                  <a href="tel:+490000000000">Telefon später einfügen</a>
                 </li>
                 <li>
                   <span>E-Mail</span>
-                  <a href="mailto:info@jauer-team.de">info@jauer-team.de</a>
+                  <a href="mailto:jauer.m@web.de">jauer.m@web.de</a>
                 </li>
                 <li>
-                  <span>Einsatzgebiet</span>
-                  Dorsten & Umgebung
+                  <span>Adresse</span>
+                  Bismarckstraße 115, 46284 Dorsten
                 </li>
                 <li>
                   <span>Erreichbarkeit</span>
@@ -716,12 +1249,67 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© 2026 Jauer&Team</div>
-      <div>Impressum · Datenschutz</div>
+      <div>
+        <div class="footer-brand">Jauer&Team</div>
+        <div>Haus- & Gartenservice in Dorsten & Umgebung</div>
+        <small>Persönlich, ordentlich und zuverlässig direkt vor Ort.</small>
+      </div>
+
+      <div class="footer-links">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#bewertungen">Bewertungen</a>
+        <a href="#standort">Standort</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
     </div>
   </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/490000000000">WhatsApp</a>
+  <a
+    class="floating-whatsapp"
+    id="floatingWhatsapp"
+    href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten%20und%20h%C3%A4tte%20gerne%20weitere%20Informationen.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F"
+    target="_blank"
+    rel="noopener noreferrer">
+    WhatsApp
+  </a>
 
+  <script>
+    const header = document.getElementById("siteHeader");
+    const floatingWhatsapp = document.getElementById("floatingWhatsapp");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 20) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      if (window.scrollY > 500) {
+        floatingWhatsapp.classList.add("show");
+      } else {
+        floatingWhatsapp.classList.remove("show");
+      }
+    });
+
+    const elements = document.querySelectorAll(
+      ".service-card, .why-card, .story-box, .trust-box, .review-card, .map-card, .cta-strip"
+    );
+
+    function revealOnScroll() {
+      const trigger = window.innerHeight * 0.88;
+
+      elements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) {
+          el.classList.add("animate");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
 </body>
 </html>
