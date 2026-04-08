@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jauer&Team | Haus- & Gartenservice in Dorsten</title>
-  <meta name="description" content="Jauer&Team – zuverlässiger Haus- und Gartenservice in Dorsten. Persönlich, ordentlich und direkt vor Ort.">
+  <meta name="description" content="Jauer&Team – zuverlässiger Haus- und Gartenservice in Dorsten und Umgebung. Persönlich, ordentlich und direkt vor Ort.">
   <style>
     :root {
       --green-dark: #173427;
@@ -151,7 +151,7 @@
       position: relative;
       color: var(--white);
       background:
-        linear-gradient(rgba(14, 25, 20, 0.54), rgba(14, 25, 20, 0.54)),
+        linear-gradient(rgba(14, 25, 20, 0.56), rgba(14, 25, 20, 0.56)),
         url("hero.jpg.png") center center / cover no-repeat;
       overflow: hidden;
     }
@@ -176,7 +176,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5.2rem);
+      font-size: clamp(2.5rem, 6vw, 5rem);
       line-height: 0.98;
       letter-spacing: -0.04em;
       margin-bottom: 18px;
@@ -184,7 +184,7 @@
     }
 
     .hero p {
-      font-size: 1.06rem;
+      font-size: 1.05rem;
       color: rgba(255,255,255,0.92);
       max-width: 620px;
       margin-bottom: 28px;
@@ -206,6 +206,7 @@
       font-weight: 700;
       transition: 0.2s ease;
       border: 1px solid transparent;
+      text-align: center;
     }
 
     .btn-primary {
@@ -270,19 +271,71 @@
       font-size: 1.02rem;
     }
 
-    .services-grid {
+    .services-grid,
+    .why-grid,
+    .trust-grid,
+    .review-grid,
+    .problem-grid,
+    .steps-grid,
+    .story-grid,
+    .faq-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .why-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .review-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .problem-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .story-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .faq-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
 
     .service-card,
     .why-card,
-    .story-box,
     .trust-box,
     .review-card,
+    .problem-card,
+    .step-card,
+    .story-box,
     .map-card,
-    .cta-strip {
+    .cta-strip,
+    .faq-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       opacity: 0;
       transform: translateY(28px);
       transition: all 0.65s ease;
@@ -294,11 +347,8 @@
     }
 
     .service-card {
-      background: rgba(255,255,255,0.78);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.82);
       backdrop-filter: blur(8px);
     }
 
@@ -308,37 +358,47 @@
       object-fit: cover;
     }
 
-    .service-card-content {
+    .service-card-content,
+    .why-card,
+    .trust-box,
+    .review-card,
+    .problem-card,
+    .step-card,
+    .story-box,
+    .faq-card {
       padding: 22px;
     }
 
-    .service-card h3 {
-      font-size: 1.18rem;
+    .service-card h3,
+    .why-card h3,
+    .trust-box h3,
+    .problem-card h3,
+    .step-card h3,
+    .story-box h3,
+    .faq-card h3 {
       color: var(--green-dark);
       margin-bottom: 10px;
     }
 
-    .service-card p {
+    .service-card p,
+    .why-card p,
+    .trust-box p,
+    .review-card p,
+    .problem-card p,
+    .step-card p,
+    .story-box p,
+    .faq-card p {
       color: var(--muted);
       font-size: 0.97rem;
     }
 
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .why-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px 20px;
-      box-shadow: var(--shadow);
+    .why-card,
+    .step-card {
       text-align: center;
     }
 
-    .why-icon {
+    .why-icon,
+    .step-number {
       width: 46px;
       height: 46px;
       border-radius: 14px;
@@ -349,48 +409,12 @@
       justify-content: center;
       font-weight: 700;
       margin: 0 auto 14px;
-      font-size: 1rem;
     }
 
-    .why-card h3 {
-      color: var(--green-dark);
-      font-size: 1.03rem;
-      margin-bottom: 8px;
-    }
-
-    .why-card p {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .trust-box {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-      transition: 0.2s ease;
-    }
-
-    .trust-box:hover {
+    .trust-box:hover,
+    .problem-card:hover,
+    .faq-card:hover {
       transform: translateY(-4px);
-    }
-
-    .trust-box h3 {
-      color: var(--green-dark);
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-    }
-
-    .trust-box p {
-      color: var(--muted);
-      font-size: 0.95rem;
     }
 
     .reviews-summary {
@@ -406,6 +430,14 @@
       border-radius: 24px;
       padding: 28px;
       box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.65s ease;
+    }
+
+    .rating-box.animate {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .rating-number {
@@ -431,6 +463,14 @@
       border-radius: 24px;
       padding: 28px;
       box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.65s ease;
+    }
+
+    .reviews-note.animate {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .reviews-note h3 {
@@ -441,20 +481,6 @@
 
     .reviews-note p {
       color: var(--muted);
-    }
-
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .review-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: var(--shadow);
     }
 
     .review-head {
@@ -493,35 +519,6 @@
       font-size: 0.98rem;
     }
 
-    .review-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .story-box {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .story-box h3 {
-      color: var(--green-dark);
-      font-size: 1.26rem;
-      margin-bottom: 14px;
-    }
-
-    .story-box p + p {
-      margin-top: 14px;
-    }
-
     .highlight {
       margin-top: 20px;
       background: var(--green-soft);
@@ -540,11 +537,7 @@
     }
 
     .map-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 24px;
       padding: 26px;
-      box-shadow: var(--shadow);
     }
 
     .map-card h3 {
@@ -578,14 +571,20 @@
       min-height: 420px;
       border-radius: 24px;
       box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.65s ease;
+    }
+
+    .map-embed.animate {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .cta-strip {
       background: linear-gradient(135deg, var(--green-dark), #284a37);
       color: var(--white);
-      border-radius: 28px;
       padding: 30px;
-      box-shadow: var(--shadow);
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 20px;
@@ -746,7 +745,10 @@
       .services-grid,
       .why-grid,
       .review-grid,
+      .problem-grid,
+      .steps-grid,
       .story-grid,
+      .faq-grid,
       .map-grid,
       .contact-grid,
       .footer-inner,
@@ -868,7 +870,7 @@
 
           <nav class="nav-links">
             <a href="#leistungen">Leistungen</a>
-            <a href="#vertrauen">Vertrauen</a>
+            <a href="#warum">Warum wir</a>
             <a href="#bewertungen">Bewertungen</a>
             <a href="#geschichte">Geschichte</a>
             <a href="#kontakt">Kontakt</a>
@@ -883,21 +885,24 @@
       <div class="container">
         <div class="hero-content">
           <div class="eyebrow">Haus- & Gartenservice in Dorsten</div>
-          <h1>Ordentliche Arbeit. Persönlicher Service. Direkt vor Ort.</h1>
+          <h1>Zuverlässiger Haus- & Gartenservice in Dorsten</h1>
           <p>
-            Jauer&Team unterstützt Sie bei Arbeiten rund um Haus, Garten und Alltag –
-            zuverlässig, sorgfältig und mit einem Auge für ein gepflegtes Ergebnis.
+            Jauer&Team unterstützt Sie zuverlässig bei Arbeiten rund um Haus, Garten und Alltag – persönlich, ordentlich und direkt vor Ort.
           </p>
 
           <div class="hero-buttons">
-            <a href="#kontakt" class="btn btn-primary">Jetzt unverbindlich anfragen</a>
-            <a href="#leistungen" class="btn btn-secondary">Leistungen ansehen</a>
+            <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Per WhatsApp anfragen
+            </a>
+            <a href="tel:+490000000000" class="btn btn-secondary">
+              Jetzt anrufen
+            </a>
           </div>
 
           <div class="trust-pills">
             <div class="trust-pill">5,0 Sterne Bewertung</div>
-            <div class="trust-pill">In Dorsten & Umgebung</div>
             <div class="trust-pill">Persönlich erreichbar</div>
+            <div class="trust-pill">In Dorsten & Umgebung</div>
           </div>
         </div>
       </div>
@@ -908,8 +913,7 @@
         <div class="section-header">
           <h2>Unsere Leistungen</h2>
           <p>
-            Praktische Unterstützung rund um Haus und Garten – ordentlich, zuverlässig
-            und individuell auf das abgestimmt, was bei Ihnen anfällt.
+            Praktische Unterstützung rund um Haus und Garten – ordentlich, zuverlässig und individuell auf das abgestimmt, was bei Ihnen anfällt.
           </p>
         </div>
 
@@ -960,7 +964,7 @@
           <div class="why-card">
             <div class="why-icon">01</div>
             <h3>Persönlich statt anonym</h3>
-            <p>Direkter Kontakt und ein bodenständiger Umgang statt distanzierter Abwicklung.</p>
+            <p>Direkter Kontakt und ein bodenständiger Umgang statt unpersönlicher Abwicklung.</p>
           </div>
 
           <div class="why-card">
@@ -977,8 +981,8 @@
 
           <div class="why-card">
             <div class="why-icon">04</div>
-            <h3>Lokal in Dorsten</h3>
-            <p>Kurze Wege, direkte Erreichbarkeit und ein Service, der nah an den Menschen ist.</p>
+            <h3>Faire & transparente Preise</h3>
+            <p>Klare Absprachen, ehrliche Einschätzung und keine unnötigen Überraschungen.</p>
           </div>
         </div>
       </div>
@@ -1010,8 +1014,41 @@
           </div>
 
           <div class="trust-box">
-            <h3>✔ Regional vor Ort</h3>
-            <p>Schnell erreichbar in Dorsten & Umgebung – flexibel und unkompliziert.</p>
+            <h3>✔ Auch kleine Aufträge willkommen</h3>
+            <p>Auch kleinere Arbeiten und kurzfristige Anfragen sind bei uns willkommen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="probleme">
+      <div class="container">
+        <div class="section-header">
+          <h2>Wir helfen Ihnen, wenn …</h2>
+          <p>
+            Nicht alles muss groß sein – oft sind es genau die liegengebliebenen Dinge im Alltag, bei denen schnelle Hilfe zählt.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-card">
+            <h3>… der Garten langsam zu viel wird</h3>
+            <p>Wenn Rasen, Hecken oder Beete gepflegt werden müssen und die Zeit dafür fehlt.</p>
+          </div>
+
+          <div class="problem-card">
+            <h3>… kleine Arbeiten liegen bleiben</h3>
+            <p>Wenn Reparaturen, Aufräumarbeiten oder praktische Hilfe im Alltag gebraucht werden.</p>
+          </div>
+
+          <div class="problem-card">
+            <h3>… schnell jemand vor Ort sein soll</h3>
+            <p>Wenn Sie einen lokalen Ansprechpartner in Dorsten suchen, der unkompliziert erreichbar ist.</p>
+          </div>
+
+          <div class="problem-card">
+            <h3>… Sie einfach Unterstützung möchten</h3>
+            <p>Wenn es um zuverlässige, ordentliche Hilfe rund um Haus und Garten geht – auch bei kleineren Aufträgen.</p>
           </div>
         </div>
       </div>
@@ -1030,16 +1067,13 @@
           <div class="rating-box">
             <div class="rating-number">5,0</div>
             <div class="stars">★★★★★</div>
-            <p>
-              Basierend auf Google-Bewertungen für Jauer&Team in Dorsten.
-            </p>
+            <p>Basierend auf Google-Bewertungen für Jauer&Team in Dorsten.</p>
           </div>
 
           <div class="reviews-note">
             <h3>Vertrauen, das man nachlesen kann</h3>
             <p>
-              Freundlichkeit, Pünktlichkeit, ordentliche Preise und saubere Arbeit –
-              genau diese Punkte werden in den Bewertungen immer wieder hervorgehoben.
+              Freundlichkeit, Pünktlichkeit, ordentliche Preise und saubere Arbeit – genau diese Punkte werden in den Bewertungen immer wieder hervorgehoben.
             </p>
           </div>
         </div>
@@ -1054,9 +1088,7 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <p>
-              „Ansprechbarkeit, Pünktlichkeit, Qualität, Professionalität und Wert.“
-            </p>
+            <p>„Ansprechbarkeit, Pünktlichkeit, Qualität, Professionalität und Wert.“</p>
           </div>
 
           <div class="review-card">
@@ -1068,23 +1100,56 @@
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <p>
-              „Super Betrieb, nettes Personal 👌“
-            </p>
+            <p>„Super Betrieb, nettes Personal 👌“</p>
           </div>
 
           <div class="review-card">
             <div class="review-head">
-              <div class="review-avatar">M</div>
+              <div class="review-avatar">T</div>
               <div>
-                <div class="review-name">Marco Schlarpp</div>
+                <div class="review-name">t</div>
                 <div class="review-meta">Google-Bewertung</div>
               </div>
             </div>
             <div class="review-stars">★★★★★</div>
-            <p>
-              „Sehr gute Erfahrung mit dem Service – freundlich, zuverlässig und ordentlich.“
-            </p>
+            <p>„Super Firma, sehr nette Mitarbeiter und ordentliche Preise!“</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablauf">
+      <div class="container">
+        <div class="section-header">
+          <h2>So läuft es ab</h2>
+          <p>
+            Einfach, schnell und unkompliziert – damit Sie ohne Umwege die Hilfe bekommen, die Sie brauchen.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Anfrage senden</h3>
+            <p>Per WhatsApp oder Telefon kurz melden und Ihr Anliegen schildern.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Kurz abstimmen</h3>
+            <p>Wir besprechen gemeinsam, worum es geht und was gebraucht wird.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Termin vereinbaren</h3>
+            <p>Sie erhalten eine schnelle Rückmeldung und einen passenden Termin.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Saubere Umsetzung</h3>
+            <p>Die Arbeiten werden ordentlich, zuverlässig und persönlich durchgeführt.</p>
           </div>
         </div>
       </div>
@@ -1095,43 +1160,39 @@
         <div class="section-header">
           <h2>Unsere Geschichte</h2>
           <p>
-            Jauer&Team steht für ehrliche Arbeit, Verlässlichkeit und den persönlichen Umgang mit den Menschen,
-            für die wir tätig sind.
+            Jauer&Team steht für ehrliche Arbeit, Verlässlichkeit und den persönlichen Umgang mit den Menschen, für die wir tätig sind.
           </p>
         </div>
 
         <div class="story-grid">
+          <div class="story-box">
+            <h3>Unsere Geschichte</h3>
+            <p>
+              Jauer&Team steht für ehrliche Arbeit, Verlässlichkeit und den persönlichen Umgang mit den Menschen, für die wir tätig sind.
+            </p>
+            <p>
+              Gegründet wurde das Unternehmen von Michael Jauer, der mit viel Einsatz, Hilfsbereitschaft und Herzblut den Grundstein für den heutigen Haus- und Gartenservice gelegt hat.
+            </p>
 
-  <div class="story-box">
-    <h3>Unsere Geschichte</h3>
-    <p>
-      Jauer&Team steht für ehrliche Arbeit, Verlässlichkeit und den persönlichen Umgang mit den Menschen, für die wir tätig sind.
-    </p>
-    <p>
-      Gegründet wurde das Unternehmen von Michael Jauer, der mit viel Einsatz, Hilfsbereitschaft und Herzblut den Grundstein für den heutigen Haus- und Gartenservice gelegt hat.
-    </p>
+            <div class="highlight">
+              Über viele Jahre stand der Name Michael Jauer & Team für zuverlässige Unterstützung in Dorsten und Umgebung.
+            </div>
+          </div>
 
-    <div class="highlight">
-      Über viele Jahre stand der Name Michael Jauer & Team für zuverlässige Unterstützung in Dorsten und Umgebung.
-    </div>
-  </div>
+          <div class="story-box">
+            <h3>Weitergeführt mit Verantwortung</h3>
+            <p>
+              Nach dem Tod von Michael Jauer im vergangenen Jahr wird das Unternehmen heute von seinem Sohn Aaron weitergeführt.
+            </p>
+            <p>
+              Mit dem neuen Namen <strong>Jauer&Team</strong> bleibt das erhalten, worauf es von Anfang an ankam: saubere Arbeit, Verlässlichkeit und persönlicher Service.
+            </p>
 
-  <div class="story-box">
-    <h3>Weitergeführt mit Verantwortung</h3>
-    <p>
-      Nach dem Tod von Michael Jauer im vergangenen Jahr wird das Unternehmen heute von seinem Sohn Aaron weitergeführt.
-    </p>
-    <p>
-      Mit dem neuen Namen <strong>Jauer&Team</strong> bleibt das erhalten, worauf es von Anfang an ankam:
-      saubere Arbeit, Verlässlichkeit und persönlicher Service.
-    </p>
-
-    <div class="highlight">
-      Aus Erfahrung gewachsen – mit Verantwortung weitergeführt.
-    </div>
-  </div>
-
-</div>
+            <div class="highlight">
+              Aus Erfahrung gewachsen – mit Verantwortung weitergeführt.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1147,9 +1208,7 @@
         <div class="map-grid">
           <div class="map-card">
             <h3>Jauer&Team</h3>
-            <p>
-              Haus- & Gartenservice mit persönlichem Ansprechpartner in Dorsten.
-            </p>
+            <p>Haus- & Gartenservice mit persönlichem Ansprechpartner in Dorsten.</p>
 
             <ul>
               <li>
@@ -1186,6 +1245,39 @@
       </div>
     </section>
 
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <h2>Häufige Fragen</h2>
+          <p>
+            Kurze Antworten auf die Dinge, die vor einer Anfrage oft wichtig sind.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-card">
+            <h3>Was kostet eine Anfrage?</h3>
+            <p>Die Anfrage ist unverbindlich. Nach kurzer Abstimmung erhalten Sie eine ehrliche Einschätzung.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Sind auch kleine Aufträge möglich?</h3>
+            <p>Ja, auch kleinere Arbeiten und kurzfristige Unterstützung sind willkommen.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>Wie schnell bekomme ich eine Rückmeldung?</h3>
+            <p>In der Regel melden wir uns zeitnah zurück, besonders bei Anfragen per WhatsApp.</p>
+          </div>
+
+          <div class="faq-card">
+            <h3>In welchem Gebiet sind Sie unterwegs?</h3>
+            <p>Vor allem in Dorsten und Umgebung – also schnell erreichbar und direkt vor Ort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="container">
         <div class="cta-strip">
@@ -1196,7 +1288,7 @@
             </p>
           </div>
 
-          <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten%20und%20h%C3%A4tte%20gerne%20weitere%20Informationen.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-light" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-light" target="_blank" rel="noopener noreferrer">
             Per WhatsApp anfragen
           </a>
         </div>
@@ -1210,14 +1302,13 @@
             <div>
               <h2>Kontakt aufnehmen</h2>
               <p>
-                Sie benötigen Unterstützung rund um Haus oder Garten?
-                Dann melden Sie sich einfach – wir helfen schnell, persönlich und zuverlässig.
+                Sie benötigen Unterstützung rund um Haus oder Garten? Dann melden Sie sich einfach – wir helfen schnell, persönlich und zuverlässig.
               </p>
 
               <div class="contact-actions">
                 <a href="tel:+490000000000" class="btn btn-light">Jetzt anrufen</a>
-                <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten%20und%20h%C3%A4tte%20gerne%20weitere%20Informationen.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer">
-                  WhatsApp schreiben
+                <a href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer">
+                  Per WhatsApp anfragen
                 </a>
               </div>
             </div>
@@ -1261,6 +1352,7 @@
         <a href="#leistungen">Leistungen</a>
         <a href="#bewertungen">Bewertungen</a>
         <a href="#standort">Standort</a>
+        <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
         <a href="#">Impressum</a>
         <a href="#">Datenschutz</a>
@@ -1271,10 +1363,10 @@
   <a
     class="floating-whatsapp"
     id="floatingWhatsapp"
-    href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten%20und%20h%C3%A4tte%20gerne%20weitere%20Informationen.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F"
+    href="https://wa.me/490000000000?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20Ihren%20Haus-%20und%20Gartenservice%20in%20Dorsten.%20K%C3%B6nnen%20Sie%20sich%20bitte%20bei%20mir%20melden%3F"
     target="_blank"
     rel="noopener noreferrer">
-    WhatsApp
+    WhatsApp anfragen
   </a>
 
   <script>
@@ -1296,7 +1388,7 @@
     });
 
     const elements = document.querySelectorAll(
-      ".service-card, .why-card, .story-box, .trust-box, .review-card, .map-card, .cta-strip"
+      ".service-card, .why-card, .trust-box, .review-card, .problem-card, .step-card, .story-box, .map-card, .faq-card, .cta-strip, .rating-box, .reviews-note, .map-embed"
     );
 
     function revealOnScroll() {
